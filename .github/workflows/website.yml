@@ -32,20 +32,20 @@ on:
       - .prettier*
       - yarn.lock
       - turbo.json
-  push:
-    branches: [main]
-    paths:
-      - .github/actions/setup-google-cloud/**
-      - .github/actions/setup-secrets/**
-      - .github/actions/setup-website/**
-      - .github/workflows/website.yml
-      - website/**
-      - packages/snack-content/**
-      - packages/snack-sdk/**
-      - .eslint*
-      - .prettier*
-      - yarn.lock
-      - turbo.json
+  push: {}
+    # branches: [main]
+    # paths:
+    #   - .github/actions/setup-google-cloud/**
+    #   - .github/actions/setup-secrets/**
+    #   - .github/actions/setup-website/**
+    #   - .github/workflows/website.yml
+    #   - website/**
+    #   - packages/snack-content/**
+    #   - packages/snack-sdk/**
+    #   - .eslint*
+    #   - .prettier*
+    #   - yarn.lock
+    #   - turbo.json
 
 jobs:
   review:
@@ -64,7 +64,7 @@ jobs:
         run: yarn test --ci --maxWorkers 1
 
   build:
-    if: ${{ github.event_name == 'pull_request' }}
+    # if: ${{ github.event_name == 'pull_request' }}
     runs-on: expo-medium
     steps:
       - name: 🏗 Setup repository
@@ -88,7 +88,7 @@ jobs:
         working-directory: ./
 
   check-config:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'expo/snack' }}
+    # if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'expo/snack' }}
     runs-on: expo-medium
     steps:
       - name: 🏗 Setup repository

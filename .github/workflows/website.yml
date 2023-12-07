@@ -49,7 +49,7 @@ on:
 
 jobs:
   review:
-    runs-on: ubuntu-latest
+    runs-on: expo-medium
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -65,7 +65,7 @@ jobs:
 
   build:
     if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
+    runs-on: expo-medium
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -89,7 +89,7 @@ jobs:
 
   check-config:
     if: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == 'expo/snack' }}
-    runs-on: ubuntu-latest
+    runs-on: expo-medium
     steps:
       - name: 🏗 Setup repository
         uses: actions/checkout@v3
@@ -111,7 +111,7 @@ jobs:
   deploy-staging:
     if: ${{ (github.event.inputs.deploy == 'staging' && github.event_name != 'pull_request') || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
     needs: review
-    runs-on: ubuntu-latest
+    runs-on: expo-medium
     environment:
       name: website-staging
       url: https://staging-snack.expo.dev
@@ -166,7 +166,7 @@ jobs:
   deploy-production:
     if: ${{ github.event.inputs.deploy == 'production' && github.ref == 'refs/heads/main' }}
     needs: review
-    runs-on: ubuntu-latest
+    runs-on: expo-medium
     environment:
       name: website-production
       url: https://snack.expo.dev

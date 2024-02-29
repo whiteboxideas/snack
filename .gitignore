@@ -1,6 +1,6 @@
 # macOS
 .DS_Store
-
+.history
 # Node
 node_modules
 npm-debug.log
